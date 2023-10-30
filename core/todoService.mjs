@@ -3,6 +3,7 @@
   - deadline should be in format `YYYY-MM-DDTHH:mm:ss.sssZ` (e.g. `2020-12-31T23:59:59.000Z`)
     It can be loaded using: `new Date(deadline)`
     And then displayed using: `deadline.toLocaleString()`
+    To convert existing date object to string format: `date.toISOString()`
   - to get date from form input use: `new Date(deadline.value)`
     Considering that form is something like this:
     ```html
@@ -130,7 +131,7 @@ class TodoService {
 
 export const todoService = new TodoService();
 export const priority = {
-    HIGH: 1,
-    MEDIUM: 2,
-    LOW: 3,
+    1: "High",
+    2: "Medium",
+    3: "Low"
 }
