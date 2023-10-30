@@ -1,0 +1,25 @@
+:root {
+    /*
+    * Colors for concentration on work
+    * https://colorhunt.co/palette/a7d397f5eec8d0d4ca555843
+    */
+    --bg-color-primary: #f9f9f9;
+    --bg-color-secondary: #A7D397;
+
+    --color-primary: black;
+    --color-secondary: white;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    background-color: var(--bg-color-primary);
+}
+
+
+/* Bootstrap 5 tweaks */
+.bg-body-secondary {
+    background-color: var(--bg-color-secondary) !important;
+}
