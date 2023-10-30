@@ -10,6 +10,8 @@
           rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
+    <!--suppress JSUnresolvedLibraryURL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="core/root.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -38,11 +40,88 @@
     </div>
 </nav>
 
+
+<section class="container pt-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>Welcome to Todo</h1>
+            <p>A simple and efficient todo list application to help you stay organized and boost your productivity.</p>
+            <ul class="list-unstyled">
+                <li><i class="bi bi-check2"></i> Easy-to-use interface</li>
+                <li><i class="bi bi-check2"></i> Store tasks in your browser's localStorage</li>
+                <li><i class="bi bi-check2"></i> Responsive design for all devices</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="container pt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="mb-4">How Todo Supercharges Your Productivity</h2>
+            <p>With its user-friendly interface and robust feature set, Todo empowers you to:</p>
+            <ul class="list-unstyled">
+                <li><i class="bi bi-arrow-right fs-4"></i> Stay meticulously organized</li>
+                <li><i class="bi bi-arrow-right fs-4"></i> Effectively prioritize tasks</li>
+                <li><i class="bi bi-arrow-right fs-4"></i> Track your progress over time</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <i class="bi bi-clock" style="font-size: 200px"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container pt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Privacy First</h2>
+            <p>
+                Your task lists are meticulously secured within your browser's localStorage.
+                This ensures that your personal data stays confidential and protected.
+                We employ advanced encryption techniques to safeguard your information from unauthorized access.
+            </p>
+            <p>
+                Furthermore, we leverage the power of JSON for data storage,
+                guaranteeing a structured and efficient approach.
+                By utilizing a caching mechanism, we optimize performance
+                by accessing localStorage only during crucial write operations and site initialization.
+                This means smoother and faster task management for you.
+            </p>
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <i class="bi bi-shield-lock" style="font-size: 200px"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <!-- Footer -->
 <div class="flex-grow-1"></div>
-<footer class="bg-body-secondary text-light">
+<footer class="bg-body-secondary">
     <div class="container py-2">
-        <p class="text-center">&copy; 2023 Todo</p>
+        <div class="row">
+            <div class="col">
+                <span>&copy; 2023 Todo</span>
+            </div>
+            <div class="col">
+                <div class="text-end">
+                    <a href="#" class="text-decoration-none text-body p-1">
+                        <i class="bi bi-facebook" style="color: #0165E1"></i>
+                    </a>
+                    <a href="#" class="text-decoration-none text-body p-1">
+                        <i class="bi bi-twitter" style="color: #00acee"></i>
+                    </a>
+                    <a href="#" class="text-decoration-none text-body p-1">
+                        <i class="bi bi-instagram" style="color: #e4405f"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
 
