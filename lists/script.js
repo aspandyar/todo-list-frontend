@@ -47,9 +47,9 @@ const renderLists = () => {
                 <h3 class="list-name">${list.name}</h3>
                 <p class="list-description">${list.description}</p>
                 <div class="list-actions">
-                    <button class="btn btn-primary">
-                        <a href="list.html?id=${list.id}">Open</a>
-                    </button>
+                    <a href="../list/index.html?listId=${list.id}">
+                        <button class="btn btn-primary">Open</button>
+                    </a>
                     <button class="btn btn-danger">Delete</button>
                 </div>
             </div>
