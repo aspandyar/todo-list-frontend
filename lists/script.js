@@ -25,6 +25,22 @@ $(() => {
     document.addEventListener('custom:listsChanged', renderLists);
 })
 
+$(() => {
+    const $modal = $("#addListModal");
+    const $form = $modal.find("form");
+    const $confirm = $modal.find(".btn-primary");
+
+    $confirm.click(() => {
+        const title = $form.find("#title").val();
+        const description = $form.find("#description").val();
+        todoService.createList(title, description);
+        eventListsChanged();
+
+        // noinspection JSUnresolvedReference
+        $modal.modal("toggle");
+    });
+})
+
 
 const renderLists = () => {
     const $lists = $("#lists");
