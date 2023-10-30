@@ -34,6 +34,13 @@ html, body {
     border-radius: 10px;
 }
 
+.todo {
+    width: 100%;
+    background: #3c7f99;
+    margin: 10px auto 20px;
+    padding: 20px 30px 30px;
+    border-radius: 10px;
+}
 
 .btn {
     display: inline-block;
