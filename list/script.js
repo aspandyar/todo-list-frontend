@@ -49,7 +49,7 @@ const renderTodos = () => {
     $todos.empty();
     todoService.getListById(listId).todos.forEach(todo => {
         $todos.append($(`
-            <div class="todo">
+            <div class="todo p-3 mb-3 rounded-3">
                 <h4>${todo.name}</h4>
                 <p>${todo.description}</p>
                 <p>Deadline: ${todo.deadline}</p>
