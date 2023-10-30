@@ -4,12 +4,8 @@
     * https://colorhunt.co/palette/a7d397f5eec8d0d4ca555843
     */
 
+    --bg-color-primary: linear-gradient(135deg, #153677, #4e085f) no-repeat fixed;
 
-    background: linear-gradient(135deg, #153677, #4e085f);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-    /* --bg-color-primary: #f9f9f9; */
     --bg-color-secondary: #4e085f;
 
     --color-primary: black;
@@ -52,31 +48,31 @@ body {
     font-size: 16px;
 }
 
-#newlist{
+#newlist {
     padding-top: 20px;
 }
 
 .input-group {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .form-control {
-  flex: 1;
-  border-radius: 5px;
-  border: 2px solid #3498db;
-  padding: 10px;
+    flex: 1;
+    border-radius: 5px;
+    border: 2px solid #3498db;
+    padding: 10px;
 }
 
 .input-group-text {
-  background-color: #3498db;
-  border: 2px solid #3498db;
+    background-color: #3498db;
+    border: 2px solid #3498db;
 }
 
 .input-group-text button {
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  padding: 4px 10px;
-  cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 4px 10px;
+    cursor: pointer;
 }
