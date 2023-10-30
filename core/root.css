@@ -3,11 +3,17 @@
     * Colors for concentration on work
     * https://colorhunt.co/palette/a7d397f5eec8d0d4ca555843
     */
-    --bg-color-primary: #f9f9f9;
-    --bg-color-secondary: #A7D397;
+    
+
+    background: linear-gradient(135deg, #153677, #4e085f);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    /* --bg-color-primary: #f9f9f9; */
+    --bg-color-secondary: #4e085f;
 
     --color-primary: black;
-    --color-secondary: white;
+    --color-secondary: white; 
 }
 
 html, body {
@@ -23,3 +29,24 @@ html, body {
 .bg-body-secondary {
     background-color: var(--bg-color-secondary) !important;
 }
+
+.list{
+    width: 100%;
+    max-width: 540px;
+    background: #3c7f99;
+    margin: 100px auto 20px;
+    padding: 20px 30px 30px;
+    border-radius: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 50px;
+    border: 2px solid #3498db;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 80px;
+    font-size: 16px;
+  }
