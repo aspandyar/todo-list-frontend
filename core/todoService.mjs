@@ -57,6 +57,11 @@ class TodoService {
         return this.lists.find(list => list.id === id);
     }
 
+    deleteList(id) {
+        this.lists = this.lists.filter(list => list.id !== id);
+        this._save();
+    }
+
     addTodoToList(listId, name, description, deadline, priority) {
         const list = this.getListById(listId);
         const id = this._generateTodoId();
