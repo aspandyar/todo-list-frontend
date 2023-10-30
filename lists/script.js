@@ -32,7 +32,7 @@ const renderLists = () => {
 
     if (!todoService.lists.length) {
         $lists.append(`
-            <div class="no-lists">
+            <div class="list p-3 mb-3 rounded-3">
                 <h3 class="list-name">No lists</h3>
                 <p class="list-description">Create a new list</p>
             </div>
@@ -42,14 +42,14 @@ const renderLists = () => {
 
     todoService.lists.forEach(list => {
         const $list = $(`
-            <div class="list">
+            <div class="list p-3 mb-3 rounded-3">
                 <h3 class="list-name">${list.name}</h3>
                 <p class="list-description">${list.description}</p>
                 <div class="list-actions">
-                    <a href="../list/index.html?listId=${list.id}">
-                        <button class="btn btn-primary">Open</button>
+                    <a href="../list/index.html?listId=${list.id}" class="btn btn-primary btn-lg">
+                        Open
                     </a>
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-danger btn-lg ms-1">Delete</button>
                 </div>
             </div>
         `);
