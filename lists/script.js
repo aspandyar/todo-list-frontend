@@ -78,3 +78,30 @@ const renderLists = () => {
         $("#lists").append($list);
     });
 }
+
+
+const addTodo = () => {
+    let title = getValue("title")
+    let description = getValue("description")
+    title = title.trim()
+    description = description.trim()
+
+    if (!title) { return showToast("Please enter a title", "error", "red") }
+    if (!description) { return showToast("Please enter a description", "error", "red") }
+    let newTodo = {
+        title,
+        description,
+        id: Math.random().toString(10).slice(2)
+    }
+
+    let oldTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    oldTodos.unshift(newTodo);
+
+    localStorage.setItem("todos", JSON.stringify(oldTodos));
+    showTable()
+    showToast("Your todo has been successfully added.", "success", "green")
+    document.getElementById("title").value = ""
+
+    document.getElementById("description").value = ""
+
+}
