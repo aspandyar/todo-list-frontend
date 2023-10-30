@@ -99,6 +99,60 @@
     </div>
 </section>
 
+<section class="pt-5">
+    <div class="container">
+        <div class="row">
+            <h2 class="mb-4">Productivity Comparison</h2>
+            <p>
+                Experience a significant boost in productivity
+                by incorporating our app into your task management routine.
+                With our intuitive interface and powerful features,
+                you'll find it easier than ever to stay organized and accomplish your goals.
+            </p>
+            <p>
+                Below, the chart vividly displays the tasks completed with and without our app.
+                It's clear that utilizing our solution leads to a substantial increase in task completion rates.
+            </p>
+            <canvas id="productivityChart" width="800" height="400"></canvas>
+        </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    new Chart(document.getElementById("productivityChart").getContext("2d"), {
+        type: "bar",
+        data: {
+            labels: ["Without App", "With App"],
+            datasets: [
+                {
+                    label: "Tasks Completed",
+                    data: [30, 50],
+                    backgroundColor: [
+                        "rgba(255, 99, 132, 0.2)",
+                        "rgba(75, 192, 192, 0.2)"
+                    ],
+                    borderColor: [
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(75, 192, 192, 1)"
+                    ],
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: "Tasks Completed"
+                    }
+                }
+            }
+        }
+    });
+</script>
+
 
 <!-- Footer -->
 <div class="flex-grow-1"></div>
