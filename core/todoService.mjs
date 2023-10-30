@@ -17,13 +17,13 @@
   - Some type hints as JS don't have them:
     listObject = {
         id: number,
-        name: string,
+        title: string,
         description: string,
         todos: todoObject[]
     }
     todoObject = {
         id: number,
-        name: string,
+        title: string,
         description: string,
         deadline: string,
         priority: number
@@ -40,11 +40,11 @@ class TodoService {
         this._listIdCounter = JSON.parse(localStorage.getItem('_listIdCounter')) || 1;
     }
 
-    createList(name, description) {
+    createList(title, description) {
         const id = this._generateListId();
         const newList = {
             id,
-            name,
+            title,
             description,
             todos: []
         };
@@ -63,7 +63,7 @@ class TodoService {
         this._save();
     }
 
-    addTodoToList(listId, name, description, deadline, priority) {
+    addTodoToList(listId, title, description, deadline, priority) {
         const list = this.getListById(listId);
         const id = this._generateTodoId();
         if (!list) {
@@ -72,7 +72,7 @@ class TodoService {
 
         const newTodo = {
             id,
-            name,
+            title,
             description,
             deadline,
             priority
@@ -116,8 +116,8 @@ class TodoService {
     _save() {
         // You don't have to manually call this method, it's called automatically
         localStorage.setItem('lists', JSON.stringify(this.lists));
-        localStorage.setItem('todoIdCounter', this._todoIdCounter);
-        localStorage.setItem('listIdCounter', this._listIdCounter);
+        localStorage.setItem('_todoIdCounter', this._todoIdCounter);
+        localStorage.setItem('_listIdCounter', this._listIdCounter);
     }
 
     _generateTodoId() {
