@@ -1,32 +1,7 @@
-:root {
-    /*
-    * Colors for concentration on work
-    * https://colorhunt.co/palette/a7d397f5eec8d0d4ca555843
-    */
-
-    --bg-color-primary: linear-gradient(135deg, #153677, #4e085f) no-repeat fixed;
-
-    --bg-color-secondary: #4e085f;
-    /* --bg-color-secondary: linear-gradient(to bottom, #9c27b0, #673ab7); */
-    /* background: linear-gradient(135deg, #800080, #cc00cc) no-repeat fixed; */
-
-
-    --color-primary: black;
-    --color-secondary: white;
-}
-
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-
-    background: var(--bg-color-primary);
-}
-
-
-/* Bootstrap 5 tweaks */
-.bg-body-secondary {
-    background-color: var(--bg-color-secondary) !important;
 }
 
 .list {
