@@ -34,63 +34,14 @@ $(() => {
     const $modal = $("#addTodosModal");
     const $form = $modal.find("form");
     const $confirm = $modal.find(".btn-primary");
-
-    $modal.keypress(function (event) {
-        let keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13' && event.shiftKey && event.cntrlKey) {
-            const title = $title.val();
-            const description = $description.val();
-            const deadline = $deadline.val();
-            const priority = $priority.val();
-
-            let isValid = true;
-            if (!title) {
-                $title.addClass("is-invalid");
-                isValid = false;
-            }
-            if (!description) {
-                $description.addClass("is-invalid");
-                isValid = false;
-            }
-            if (!deadline) {
-                $deadline.addClass("is-invalid");
-                isValid = false;
-            }
-
-            if (!isValid) {
-                error_sound.play();
-                // TODO: show alert
-                return;
-            }
-
-            todoService.addTodoToList(listId, title, description, deadline, priority);
-            eventTodosChanged();
-
-            // noinspection JSUnresolvedReference
-            $modal.modal("toggle");
-
-            task_created.play().then();
-        }
-        event.stopPropagation();
-    });
+    const $close = $modal.find(".btn-secondary");
 
     const $title = $form.find("#title");
     const $description = $form.find("#description");
     const $deadline = $form.find("#deadline");
     const $priority = $form.find("#priority");
 
-    $modal.on("hidden.bs.modal", () => {
-        $form.trigger("reset");
-        $title.removeClass("is-invalid");
-        $description.removeClass("is-invalid");
-        $deadline.removeClass("is-invalid");
-        $priority.removeClass("is-invalid");
-    });
-    $title.on("input", () => $title.removeClass("is-invalid"));
-    $description.on("input", () => $description.removeClass("is-invalid"));
-    $deadline.on("input", () => $deadline.removeClass("is-invalid"));
-
-    $confirm.click(() => {
+    const onConfirm = () => {
         const title = $title.val();
         const description = $description.val();
         const deadline = $deadline.val();
@@ -111,7 +62,7 @@ $(() => {
         }
 
         if (!isValid) {
-            error_sound.play();
+            error_sound.play().then();
             // TODO: show alert
             return;
         }
@@ -121,37 +72,74 @@ $(() => {
 
         // noinspection JSUnresolvedReference
         $modal.modal("toggle");
-
         task_created.play().then();
-    });
+    };
 
+
+    // Listeners
+    $confirm.click(onConfirm)
+    $modal.keypress(function (event) {
+        let keycode = (event.keyCode || event.which);
+        if (keycode === '13' && event.shiftKey) {
+            onConfirm();
+        }
+        event.stopPropagation();
+    });
     $confirm.mouseover(() => {
         $confirm.attr("title", "Click to confirm");
     })
-
     $close.mouseover(() => {
         $close.attr("title", "Click to close");
-    })
+    });
+    $modal.on("hidden.bs.modal", () => {
+        $form.trigger("reset");
+        $title.removeClass("is-invalid");
+        $description.removeClass("is-invalid");
+        $deadline.removeClass("is-invalid");
+        $priority.removeClass("is-invalid");
+    });
+    $title.on("input", () => $title.removeClass("is-invalid"));
+    $description.on("input", () => $description.removeClass("is-invalid"));
+    $deadline.on("input", () => $deadline.removeClass("is-invalid"));
 })
 
 const renderTodos = () => {
     const $todos = $("#todos");
     $todos.empty();
     todoService.getListById(listId).todos.forEach(todo => {
+        const doneOrUndo = todo.isDone ? "Undo" : "Done";
         const $todo = $(`
             <div class="todo card bg-secondary p-3 mb-3 rounded-3">
-                <h4>${todo.title}</h4>
-                <p>${todo.description}</p>
-                <p>Deadline: ${todo.deadline}</p>
-                <p>Priority: ${priority[todo.priority]}</p>
+                <div class="_todo_body">
+                    <h4>${todo.title}</h4>
+                    <p>${todo.description}</p>
+                    <p>Deadline: ${todo.deadline}</p>
+                    <p>Priority: ${priority[todo.priority]}</p>
+                </div>
                 <div class="list-actions">
+                    <button class="btn btn-primary btn-lg ms-1">${doneOrUndo}</button>
                     <button class="btn btn-danger btn-lg ms-1">Delete</button>
                 </div>
             </div>
         `);
 
+        if (todo.isDone) {
+            $todo.find("._todo_body").addClass("text-decoration-line-through");
+        }
+
+        $todo.find(".btn-primary").click(() => {
+            if (todo.isDone) {
+                bong.play().then();
+            } else {
+                success.play().then();
+            }
+
+            todoService.toggleTodoDone(listId, todo.id);
+            eventTodosChanged();
+        })
+
         $todo.find(".btn-danger").click(() => {
-            // TODO: play sound
+            bong.play().then();
             todoService.deleteTodoFromList(listId, todo.id);
             eventTodosChanged();
         });

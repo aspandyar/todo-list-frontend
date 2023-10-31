@@ -26,7 +26,8 @@
         title: string,
         description: string,
         deadline: string,
-        priority: number
+        priority: number,
+        isDone: boolean
     }
  */
 
@@ -77,7 +78,8 @@ class TodoService {
             title,
             description,
             deadline,
-            priority
+            priority,
+            isDone: false,
         };
         list.todos.push(newTodo);
         this._save();
@@ -92,6 +94,21 @@ class TodoService {
         }
 
         list.todos = list.todos.filter(todo => todo.id !== todoId);
+        this._save();
+    }
+
+    toggleTodoDone(listId, todoId) {
+        const list = this.getListById(listId);
+        if (!list) {
+            return;
+        }
+
+        const todo = list.todos.find(todo => todo.id === todoId);
+        if (!todo) {
+            return;
+        }
+
+        todo.isDone = !todo.isDone;
         this._save();
     }
 
