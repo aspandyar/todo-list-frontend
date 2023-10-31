@@ -185,3 +185,38 @@ html, body {
 #myBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
 }
+
+/* High Priority */
+.priority-High {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 2px solid darkred;
+  border-radius: 20px;
+  font-weight: bold;
+  padding: 10px; /* Add padding for extra spacing */
+  box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  text-transform: uppercase; /* Convert text to uppercase */
+}
+
+/* Medium Priority */
+.priority-Medium {
+  color: yellow;
+  background-color: rgba(255, 255, 0, 0.1);
+  border: 2px solid goldenrod;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+}
+
+/* Low Priority */
+.priority-Low {
+  color: blue;
+  background-color: rgba(0, 0, 255, 0.1);
+  border: 2px solid darkblue;
+  border-radius: 20px;
+  opacity: 0.8;
+  padding: 10px;
+  box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+}

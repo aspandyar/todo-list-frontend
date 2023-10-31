@@ -115,7 +115,7 @@ const renderTodos = () => {
                     <h4>${todo.title}</h4>
                     <p>${todo.description}</p>
                     <p>Deadline: ${todo.deadline}</p>
-                    <p>Priority: ${priority[todo.priority]}</p>
+                    <p class="priority-${priority[todo.priority]}">Priority: ${priority[todo.priority]}</p>
                 </div>
                 <div class="list-actions">
                     <button class="btn btn-primary btn-lg ms-1">${doneOrUndo}</button>
