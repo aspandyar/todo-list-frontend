@@ -22,7 +22,7 @@ const listId = getCurrentListId();
 $(() => {
     const list = getCurrentList();
 
-    $("#list-name").text(list.name);
+    $("#list-name").text(list.title);
     $("#list-description").text(list.description);
 
     if (!list.todos.length) {
@@ -49,8 +49,8 @@ const renderTodos = () => {
     $todos.empty();
     todoService.getListById(listId).todos.forEach(todo => {
         $todos.append($(`
-            <div class="todo">
-                <h4>${todo.name}</h4>
+            <div class="todo p-3 mb-3 rounded-3">
+                <h4>${todo.title}</h4>
                 <p>${todo.description}</p>
                 <p>Deadline: ${todo.deadline}</p>
                 <p>Priority: ${priority[todo.priority]}</p>
