@@ -70,6 +70,8 @@ class TodoService {
             return null;
         }
 
+        deadline = (new Date(deadline)).toISOString();
+
         const newTodo = {
             id,
             title,
@@ -81,6 +83,16 @@ class TodoService {
         this._save();
 
         return id;
+    }
+
+    deleteTodoFromList(listId, todoId) {
+        const list = this.getListById(listId);
+        if (!list) {
+            return;
+        }
+
+        list.todos = list.todos.filter(todo => todo.id !== todoId);
+        this._save();
     }
 
     getTodosSortedByDeadlinePriority(listId) {
