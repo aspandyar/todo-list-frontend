@@ -1,5 +1,5 @@
 import {todoService, priority} from "../core/todoService.mjs";
-
+import {success, error_sound, bong, task_created} from "../core/root.js"
 
 const getCurrentListId = () => {
     // http://localhost/list/index.html?listId=1
@@ -30,13 +30,28 @@ $(() => {
     document.addEventListener('custom:todosChanged', renderTodos);
 })
 
-let task_created = new Audio("../audio/task_created.mp3")
-
 $(() => {
     const $modal = $("#addTodosModal");
     const $form = $modal.find("form");
     const $confirm = $modal.find(".btn-primary");
-    const $close = $modal.find(".btn-secondary");
+
+    $modal.keypress(function (event) {
+        let keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13' && event.ctrlKey) {
+            const title = $form.find("#title").val();
+            const description = $form.find("#description").val();
+            const date = $form.find("#date").val();
+            const priority = $form.find("#priority").val();
+            todoService.addTodoToList(listId, title, description, date, priority);
+            eventTodosChanged();
+
+            // noinspection JSUnresolvedReference
+            $modal.modal("toggle");
+
+            task_created.play()
+        }
+        event.stopPropagation();
+    });
 
     const $title = $form.find("#title");
     const $description = $form.find("#description");
