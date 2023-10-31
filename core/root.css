@@ -6,8 +6,42 @@ html, body {
 
 .list {
     background: #3c7f99;
+    margin: 10px auto 20px;
+    padding: 20px 30px 30px;
+    border-radius: 10px;
 }
 
-.todo {
-    background: #3c7f99;
+
+.btn {
+    display: inline-block;
+    padding: 10px 50px;
+    border: 2px solid #3498db;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 80px;
+    font-size: 16px;
 }
+
+#newlist {
+    padding-top: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.form-control {
+    flex: 1;
+    border-radius: 5px;
+    border: 2px solid #3498db;
+    padding: 10px;
+}
+
+.input-group-text {
+    background-color: #3498db;
+    border: 2px solid #3498db;
+}
+

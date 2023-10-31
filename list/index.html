@@ -28,10 +28,10 @@
                     <a class="nav-link" aria-current="page" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Lists</a>
+                    <a class="nav-link" href="../lists/index.html">Lists</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About us</a>
+                    <a class="nav-link active" aria-current="page" href="index.html">About us</a>
                 </li>
             </ul>
         </div>
@@ -39,6 +39,14 @@
 </nav>
 
 <section class="container">
+    <div id="newlist">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="new list" aria-describedby="basic-addon1">
+            <span class="input-group-text" id="basic-addon1">
+                    <button id="push">Add</button>
+                </span>
+        </div>
+    </div>
     <!-- `script.js` will replace `Loading...` -->
     <h2 id="list-name">Loading...</h2>
     <p id="list-description">Loading...</p>
