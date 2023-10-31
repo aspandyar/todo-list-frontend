@@ -44,10 +44,13 @@ $(() => {
     document.addEventListener('custom:todosChanged', renderTodos);
 })
 
+let task_created = new Audio("../audio/task_created.mp3")
+
 $(() => {
     const $modal = $("#addTodosModal");
     const $form = $modal.find("form");
     const $confirm = $modal.find(".btn-primary");
+    const $close = $modal.find(".btn-secondary");
 
     $confirm.click(() => {
         const title = $form.find("#title").val();
@@ -60,7 +63,23 @@ $(() => {
 
         // noinspection JSUnresolvedReference
         $modal.modal("toggle");
+
+        task_created.play()
     });
+
+    $confirm.mouseover(() => {
+        $confirm.attr("title", "Click to confirm");
+    })
+
+    $close.mouseover(() => {
+        $confirm.attr("title", "Click to close");
+    })
+
+    $("#text-input").keypress(function(event) {
+        if (event.which == 13) { // 13 is the key code for Enter
+          alert("Enter key pressed");
+        }
+      });
 })
 
 const renderTodos = () => {

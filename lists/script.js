@@ -29,6 +29,14 @@ $(() => {
         // noinspection JSUnresolvedReference
         $modal.modal("toggle");
     });
+
+    $confirm.mouseover(() => {
+        $confirm.attr("title", "Click to confirm");
+    })
+
+    $close.mouseover(() => {
+        $confirm.attr("title", "Click to close");
+    })
 })
 
 
