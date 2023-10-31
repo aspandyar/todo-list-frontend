@@ -18,50 +18,13 @@ $(() => {
 $(() => {
     const $modal = $("#addListModal");
     const $form = $modal.find("form");
+
     const $title = $form.find("#title");
     const $description = $form.find("#description");
     const $confirm = $modal.find(".btn-primary");
+    const $close = $modal.find(".btn-secondary");
 
-    $modal.on("hidden.bs.modal", () => {
-        $form.trigger("reset");
-        $title.removeClass("is-invalid");
-        $description.removeClass("is-invalid");
-    });
-    $title.on("input", () => $title.removeClass("is-invalid"));
-    $description.on("input", () => $description.removeClass("is-invalid"));
-
-    $modal.keypress(function (event) {
-        let keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13'&& event.shiftKey) {        
-            const title = $title.val();
-            let isValid = true;
-            if (!title) {
-                $title.addClass("is-invalid");
-                isValid = false;
-            }
-        
-            const description = $description.val();
-            if (!description) {
-                $description.addClass("is-invalid");
-                isValid = false;
-            }
-        
-            if (!isValid) {
-                error_sound.play();
-                return;
-            }
-        
-            todoService.createList(title, description);
-            eventListsChanged();
-        
-            // noinspection JSUnresolvedReference
-            $modal.modal("toggle");
-            task_created.play();
-        }
-        event.stopPropagation();
-    });
-
-    $confirm.click(() => {
+    const onConfirm = () => {
         const title = $title.val();
         let isValid = true;
         if (!title) {
@@ -76,7 +39,7 @@ $(() => {
         }
 
         if (!isValid) {
-            error_sound.play();
+            error_sound.play().then();
             return;
         }
 
@@ -85,12 +48,30 @@ $(() => {
 
         // noinspection JSUnresolvedReference
         $modal.modal("toggle");
-        task_created.play();
-    });
+        task_created.play().then();
+    }
 
+    $confirm.click(onConfirm);
+    $modal.keypress(function (event) {
+        let keycode = (event.keyCode || event.which);
+        if (keycode === '13' && event.shiftKey) {
+            onConfirm();
+        }
+        event.stopPropagation();
+    });
     $confirm.mouseover(() => {
         $confirm.attr("title", "Click to confirm");
     })
+    $close.mouseover(() => {
+        $close.attr("title", "Click to close");
+    });
+    $modal.on("hidden.bs.modal", () => {
+        $form.trigger("reset");
+        $title.removeClass("is-invalid");
+        $description.removeClass("is-invalid");
+    });
+    $title.on("input", () => $title.removeClass("is-invalid"));
+    $description.on("input", () => $description.removeClass("is-invalid"));
 })
 
 
@@ -123,6 +104,7 @@ const renderLists = () => {
         `);
 
         $list.find('.btn-danger').click(() => {
+            bong.play().then();
             todoService.deleteList(list.id);
             eventListsChanged();
         });
