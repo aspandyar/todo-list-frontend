@@ -37,18 +37,39 @@ $(() => {
 
     $modal.keypress(function (event) {
         let keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13' && event.ctrlKey) {
-            const title = $form.find("#title").val();
-            const description = $form.find("#description").val();
-            const date = $form.find("#date").val();
-            const priority = $form.find("#priority").val();
-            todoService.addTodoToList(listId, title, description, date, priority);
+        if (keycode == '13' && event.shiftKey && event.cntrlKey) {
+            const title = $title.val();
+            const description = $description.val();
+            const deadline = $deadline.val();
+            const priority = $priority.val();
+
+            let isValid = true;
+            if (!title) {
+                $title.addClass("is-invalid");
+                isValid = false;
+            }
+            if (!description) {
+                $description.addClass("is-invalid");
+                isValid = false;
+            }
+            if (!deadline) {
+                $deadline.addClass("is-invalid");
+                isValid = false;
+            }
+
+            if (!isValid) {
+                error_sound.play();
+                // TODO: show alert
+                return;
+            }
+
+            todoService.addTodoToList(listId, title, description, deadline, priority);
             eventTodosChanged();
 
             // noinspection JSUnresolvedReference
             $modal.modal("toggle");
 
-            task_created.play()
+            task_created.play().then();
         }
         event.stopPropagation();
     });
@@ -90,7 +111,7 @@ $(() => {
         }
 
         if (!isValid) {
-            // TODO: play sound
+            error_sound.play();
             // TODO: show alert
             return;
         }
