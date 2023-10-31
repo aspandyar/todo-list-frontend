@@ -107,6 +107,17 @@ $(() => {
 const renderTodos = () => {
     const $todos = $("#todos");
     $todos.empty();
+
+    const {todos} = todoService.getListById(listId);
+    if (!todos.length) {
+        $todos.append(`
+             <div class="todo card bg-secondary p-3 rounded-3">
+                <h4>No todos yet</h4>
+            </div>
+        `);
+        return;
+    }
+
     todoService.getListById(listId).todos.forEach(todo => {
         const doneOrUndo = todo.isDone ? "Undo" : "Done";
         const $todo = $(`
