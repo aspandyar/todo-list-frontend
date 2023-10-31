@@ -1,5 +1,5 @@
 import {todoService} from "../core/todoService.mjs";
-
+import {success, error_sound, bong, task_created} from "../core/root.js"
 
 const eventListsChanged = () => {
     document.dispatchEvent(new CustomEvent("custom:listsChanged"));
@@ -30,6 +30,37 @@ $(() => {
     $title.on("input", () => $title.removeClass("is-invalid"));
     $description.on("input", () => $description.removeClass("is-invalid"));
 
+    $modal.keypress(function (event) {
+        let keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {        
+            const title = $title.val();
+            let isValid = true;
+            if (!title) {
+                $title.addClass("is-invalid");
+                isValid = false;
+            }
+        
+            const description = $description.val();
+            if (!description) {
+                $description.addClass("is-invalid");
+                isValid = false;
+            }
+        
+            if (!isValid) {
+                error_sound.play();
+                return;
+            }
+        
+            todoService.createList(title, description);
+            eventListsChanged();
+        
+            // noinspection JSUnresolvedReference
+            $modal.modal("toggle");
+            task_created.play();
+        }
+        event.stopPropagation();
+    });
+
     $confirm.click(() => {
         const title = $title.val();
         let isValid = true;
@@ -45,6 +76,7 @@ $(() => {
         }
 
         if (!isValid) {
+            error_sound.play();
             return;
         }
 
@@ -53,14 +85,11 @@ $(() => {
 
         // noinspection JSUnresolvedReference
         $modal.modal("toggle");
+        task_created.play();
     });
 
     $confirm.mouseover(() => {
         $confirm.attr("title", "Click to confirm");
-    })
-
-    $close.mouseover(() => {
-        $confirm.attr("title", "Click to close");
     })
 })
 
