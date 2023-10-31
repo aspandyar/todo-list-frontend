@@ -32,7 +32,7 @@ $(() => {
 
     $modal.keypress(function (event) {
         let keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13'&& event.ctrlKey) {        
+        if (keycode == '13'&& event.shiftKey) {        
             const title = $title.val();
             let isValid = true;
             if (!title) {
