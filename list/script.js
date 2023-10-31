@@ -1,5 +1,5 @@
 import {todoService, priority} from "../core/todoService.mjs";
-import {success, error_sound, bong, task_created} from "../core/root.js"
+import {success, error_sound, bong, task_created, showAlert} from "../core/root.js"
 
 const getCurrentListId = () => {
     // http://localhost/list/index.html?listId=1
@@ -63,7 +63,7 @@ $(() => {
 
         if (!isValid) {
             error_sound.play().then();
-            // TODO: show alert
+            showAlert("Please fill all fields", "danger");
             return;
         }
 
@@ -73,6 +73,7 @@ $(() => {
         // noinspection JSUnresolvedReference
         $modal.modal("toggle");
         task_created.play().then();
+        showAlert("Todo added", "success");
     };
 
 

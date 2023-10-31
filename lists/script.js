@@ -1,5 +1,5 @@
 import {todoService} from "../core/todoService.mjs";
-import {success, error_sound, bong, task_created} from "../core/root.js"
+import {success, error_sound, bong, task_created, showAlert} from "../core/root.js"
 
 const eventListsChanged = () => {
     document.dispatchEvent(new CustomEvent("custom:listsChanged"));
@@ -40,6 +40,7 @@ $(() => {
 
         if (!isValid) {
             error_sound.play().then();
+            showAlert("Please fill all fields", "danger");
             return;
         }
 
@@ -49,6 +50,7 @@ $(() => {
         // noinspection JSUnresolvedReference
         $modal.modal("toggle");
         task_created.play().then();
+        showAlert("List created", "success");
     }
 
     $confirm.click(onConfirm);
@@ -112,21 +114,3 @@ const renderLists = () => {
         $("#lists").append($list);
     });
 }
-
-// using snippet
-// let mybutton = document.getElementById("myBtn");
-
-// window.onscroll = function() {scrollFunction()};
-
-// function scrollFunction() {
-//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-//     mybutton.style.display = "block";
-//   } else {
-//     mybutton.style.display = "none";
-//   }
-// }
-
-// function topFunction() {
-//   document.body.scrollTop = 0; 
-//   document.documentElement.scrollTop = 0;
-// } 

@@ -11,7 +11,7 @@ html, body {
     border-radius: 10px;
 }
 
-/* using snipet here + animation */
+/* using snippet here + animation */
 .btn {
     display: inline-block;
     padding: 10px 50px;
@@ -35,10 +35,6 @@ html, body {
   transform: translateY(4px);
 }
 
-#newlist {
-    padding-top: 20px;
-}
-
 .input-group {
     display: flex;
     align-items: center;
@@ -59,7 +55,6 @@ html, body {
 .fa {
   padding: 20px;
   font-size: 20px;
-  width: 1x;
   text-align: center;
   text-decoration: none;
   margin: 5px 5px;
