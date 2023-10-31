@@ -25,20 +25,23 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="navbar-nav ms-auto my-1 my-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link" href="../index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../lists/index.html">Lists</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">About us</a>
+                    <a class="nav-link" href="../about/index.html">About us</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<section class="container">
+<section class="container mt-3">
+    <!-- `script.js` will replace `Loading...` -->
+    <h2 id="list-name">Loading...</h2>
+    <p id="list-description">Loading...</p>
     <div class="mt-3 text-end">
         <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#addTodosModal">
             <!-- <i class="bi bi-plus-lg"></i> -->NewTodos

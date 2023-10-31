@@ -18,11 +18,36 @@ $(() => {
 $(() => {
     const $modal = $("#addListModal");
     const $form = $modal.find("form");
+    const $title = $form.find("#title");
+    const $description = $form.find("#description");
     const $confirm = $modal.find(".btn-primary");
 
+    $modal.on("hidden.bs.modal", () => {
+        $form.trigger("reset");
+        $title.removeClass("is-invalid");
+        $description.removeClass("is-invalid");
+    });
+    $title.on("input", () => $title.removeClass("is-invalid"));
+    $description.on("input", () => $description.removeClass("is-invalid"));
+
     $confirm.click(() => {
-        const title = $form.find("#title").val();
-        const description = $form.find("#description").val();
+        const title = $title.val();
+        let isValid = true;
+        if (!title) {
+            $title.addClass("is-invalid");
+            isValid = false;
+        }
+
+        const description = $description.val();
+        if (!description) {
+            $description.addClass("is-invalid");
+            isValid = false;
+        }
+
+        if (!isValid) {
+            return;
+        }
+
         todoService.createList(title, description);
         eventListsChanged();
 
