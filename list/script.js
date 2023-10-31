@@ -37,7 +37,7 @@ $(() => {
 
     $modal.keypress(function (event) {
         let keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13') {
+        if (keycode == '13' && event.ctrlKey) {
             const title = $form.find("#title").val();
             const description = $form.find("#description").val();
             const date = $form.find("#date").val();
