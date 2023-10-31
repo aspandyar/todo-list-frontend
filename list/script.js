@@ -68,11 +68,14 @@ const renderTodos = () => {
     $todos.empty();
     todoService.getListById(listId).todos.forEach(todo => {
         $todos.append($(`
-            <div class="todo p-3 mb-3 rounded-3">
+            <div class="todo card bg-secondary p-3 mb-3 rounded-3">
                 <h4>${todo.title}</h4>
                 <p>${todo.description}</p>
                 <p>Deadline: ${todo.deadline}</p>
                 <p>Priority: ${priority[todo.priority]}</p>
+                <div class="list-actions">
+                    <button class="btn btn-danger btn-lg ms-1">Delete</button>
+                </div>
             </div>
         `));
     });
