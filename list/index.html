@@ -39,21 +39,55 @@
 </nav>
 
 <section class="container">
-    <div id="newlist">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="new list" aria-describedby="basic-addon1">
-            <span class="input-group-text" id="basic-addon1">
-                    <button id="push">Add</button>
-                </span>
-        </div>
+    <div class="mt-3 text-end">
+        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#addTodosModal">
+            <!-- <i class="bi bi-plus-lg"></i> -->NewTodos
+        </button>
     </div>
-    <!-- `script.js` will replace `Loading...` -->
-    <h2 id="list-name">Loading...</h2>
-    <p id="list-description">Loading...</p>
-    <div id="todos">
+    <div id="todos" class="mt-3">
         <!-- `script.js will generate HTML code` -->
     </div>
 </section>
+
+<div class="modal fade" id="addTodosModal" tabindex="-1" aria-labelledby="addTodosModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Add a new Todos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" name="date">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="priorioty">Priority</label>
+                        <select class="form-select" id="priority">
+                          <option selected>Choose...</option>
+                          <option value="1">Low</option>
+                          <option value="2">Medium</option>
+                          <option value="3">High</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Footer -->
 <div class="flex-grow-1"></div>
