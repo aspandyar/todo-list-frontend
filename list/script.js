@@ -21,24 +21,10 @@ const listId = getCurrentListId();
 
 
 $(() => {
-    // const list = getCurrentList();
+    const list = getCurrentList();
 
-    // $("#list-name").text(list.title);
-    // $("#list-description").text(list.description);
-
-    // if (!list.todos.length) {
-    //     // Create some todos for testing
-    //     for (let i = 0; i < 5; i++) {
-    //         todoService.addTodoToList(
-    //             listId,
-    //             `Todo ${i}`,
-    //             `Description ${i}`,
-    //             (new Date()).toISOString(),
-    //             Math.floor(Math.random() * 3) + 1,
-    //         );
-    //     }
-    //     eventTodosChanged();
-    // }
+    $("#list-name").text(list.title);
+    $("#list-description").text(list.description);
 
     renderTodos();
     document.addEventListener('custom:todosChanged', renderTodos);
@@ -75,11 +61,11 @@ $(() => {
         $confirm.attr("title", "Click to close");
     })
 
-    $("#text-input").keypress(function(event) {
-        if (event.which == 13) { // 13 is the key code for Enter
-          alert("Enter key pressed");
-        }
-      });
+    // $("#text-input").keypress(function(event) {
+    //     if (event.which == 13) { // 13 is the key code for Enter
+    //       alert("Enter key pressed");
+    //     }
+    //   });
 })
 
 const renderTodos = () => {
