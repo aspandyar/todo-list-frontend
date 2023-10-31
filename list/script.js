@@ -79,9 +79,12 @@ $(() => {
 
     // Listeners
     $confirm.click(onConfirm)
-    $modal.keypress(function (event) {
+    $(document).keypress(function (event) {
+        if (!$modal.hasClass("show")) {
+          return;
+        }
         let keycode = (event.keyCode || event.which);
-        if (keycode === '13' && event.shiftKey) {
+        if (keycode === 13 && event.ctrlKey) {
             onConfirm();
         }
         event.stopPropagation();
